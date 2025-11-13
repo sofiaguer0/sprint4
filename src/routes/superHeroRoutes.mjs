@@ -8,7 +8,7 @@ import {
     crearSuperheroeController, 
     actualizarSuperHeroeController, 
     eliminarSuperPorIdController, 
-    eliminarSuperPorNombreController 
+    eliminarSuperPorNombreController, renderDashboardController,  mostrarFormularioAgregarController, mostrarFormularioEditarController
 } from '../controllers/superheroesController.mjs';
 import { validarCrearSuperHeroe, validarActualizarSuperHeroe, validarId, validarNombre } from '../validation/validationRules.js';
 import { handleValidationErrors } from '../validation/errorMiddleware.js';
@@ -16,6 +16,11 @@ import { handleValidationErrors } from '../validation/errorMiddleware.js';
 
 
 const router = express.Router();
+
+//tp3
+router.get('/dashboard',renderDashboardController);
+router.get('/heroes/nuevo', mostrarFormularioAgregarController);
+router.get('/heroes/editar/:id', mostrarFormularioEditarController);
 
 // GET
 router.get('/heroes', obtenerTodosLosSuperHeroesController);

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard de Superhéroes</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gradient-to-br from-purple-100 via-pink-100 to-blue-100 min-h-screen text-gray-700">
+  <div class="container mx-auto px-4 py-8">
+    
+    <!-- HEADER -->
+    <header class="text-center mb-8">
+      <h1 class="text-5xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+        Dashboard de Superhéroes
+      </h1>
+    </header>
+
+    <!-- NAV -->
+    <nav class="backdrop-blur-sm rounded-xl p-6 mb-8 flex justify-center">
+  <a href="heroes/nuevo"
+     class="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-3 rounded-full font-semibold shadow-md transform hover:scale-105 transition-all duration-300">
+     Agregar Superhéroe
+  </a>
+</nav>
+
+<!-- ESTADÍSTICAS -->
+<section class="flex justify-center mb-10">
+  <div class="bg-gradient-to-br from-purple-200 to-purple-300 rounded-2xl p-6 shadow-md w-full max-w-md">
+    <h3 class="text-lg font-semibold text-purple-800 mb-2 text-center">Total de Superhéroes</h3>
+    <div class="text-4xl font-bold text-purple-900 text-center"><%= superheroes.length %></div>
+  </div>
+</section>
+
+    <!-- SECCIÓN HÉROES -->
+    <section>
+      <h2 class="text-3xl font-bold text-center mb-8 text-gray-800 text-center">Todos los Héroes</h2>
+
+      <% if (superheroes.length === 0) { %>
+        <div class="bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl p-12 text-center">
+          <div class="text-6xl mb-4">🦸</div>
+          <p class="text-xl text-gray-600">No hay superhéroes cargados aún</p>
+        </div>
+      <% } else { %>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <% superheroes.forEach(heroe => { %>
+            <div class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-md p-6 transform hover:scale-105 transition-all duration-300 hover:shadow-2xl border border-purple-100">
+              <h3 class="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-4 text-center">
+                <%= heroe.nombreSuperHeroe %>
+              </h3>
+
+              <div class="space-y-2 mb-4 text-sm">
+                <p><strong class="text-purple-700">Nombre Real:</strong> <%= heroe.nombreReal %></p>
+                <p><strong class="text-purple-700">Edad:</strong> <%= heroe.edad %> años</p>
+                <p><strong class="text-purple-700">Planeta:</strong> <%= heroe.planetaOrigen || 'Sin planeta de origen' %></p>
+                <p><strong class="text-purple-700">Debilidad:</strong> <%= heroe.debilidad || 'Sin debilidad' %></p>
+              </div>
+
+              <!-- Poderes -->
+              <div class="mb-4">
+                <h4 class="font-semibold text-purple-700 mb-2">Poderes:</h4>
+                <div class="flex flex-wrap gap-2">
+                  <% heroe.poderes.forEach(poder => { %>
+                    <span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-xs font-medium">
+                      <%= poder %>
+                    </span>
+                  <% }); %>
+                </div>
+              </div>
+
+              <!-- Aliados -->
+              <div class="mb-4">
+                <h4 class="font-semibold text-blue-700 mb-2">Aliados:</h4>
+                <div class="flex flex-wrap gap-2">
+                  <% if (heroe.aliados && heroe.aliados.length > 0) { %>
+                    <% heroe.aliados.forEach(aliado => { %>
+                      <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-medium"><%= aliado %></span>
+                    <% }); %>
+                  <% } else { %>
+                    <span class="text-gray-400 text-sm italic">Sin aliados</span>
+                  <% } %>
+                </div>
+              </div>
+
+              <!-- Enemigos -->
+              <div class="mb-4">
+                <h4 class="font-semibold text-red-700 mb-2">Enemigos:</h4>
+                <div class="flex flex-wrap gap-2">
+                  <% if (heroe.enemigos && heroe.enemigos.length > 0) { %>
+                    <% heroe.enemigos.forEach(enemigo => { %>
+                      <span class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-xs font-medium"><%= enemigo %></span>
+                    <% }); %>
+                  <% } else { %>
+                    <span class="text-gray-400 text-sm italic">Sin enemigos</span>
+                  <% } %>
+                </div>
+              </div>
+
+              <p class="text-sm mb-4"><strong class="text-gray-700">Creador:</strong> <%= heroe.creador || 'Desconocido' %></p>
+
+              <div class="flex gap-3 mt-4">
+                <a href="heroes/editar/<%= heroe._id %>"
+                   class="flex-1 bg-blue-400 hover:bg-blue-500 text-white px-4 py-2 rounded-lg font-semibold shadow-md transform hover:scale-105 transition-all duration-300 text-center">
+                  ✏️ Editar
+                </a>
+                <button onclick="confirmarEliminacion('<%= heroe._id %>', '<%= heroe.nombreSuperHeroe %>')" 
+                        class="flex-1 bg-red-400 hover:bg-red-500 text-white px-4 py-2 rounded-lg font-semibold shadow-md transform hover:scale-105 transition-all duration-300">
+                  🗑️ Eliminar
+                </button>
+              </div>
+            </div>
+          <% }); %>
+        </div>
+      <% } %>
+    </section>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="/js/dashboard.js"></script>
+</body>
+</html>

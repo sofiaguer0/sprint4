@@ -178,3 +178,44 @@ export async function eliminarSuperPorNombreController(req, res) {
         });
     }
 }
+
+
+//tp3 
+
+export async function renderDashboardController(req, res) {
+    try {
+        console.log("🦸 Entrando a renderDashboardController..."); // 👈 prueba de log
+
+        const superheroes = await obtenerTodosLosSuperHeroes();
+        console.log("✅ Superheroes obtenidos:", superheroes.length);
+
+        res.render('dashboard', { superheroes });
+    } catch (error) {
+        console.error('❌ Error al renderizar dashboard:', error);
+        res.status(500).send('Error al renderizar la vista');
+    }
+}
+
+
+export async function mostrarFormularioAgregarController(req, res) {
+    try {
+        res.render('addSuperhero');
+    } catch (error) {
+        res.status(500).send({ mensaje: 'Error al cargar el formulario', error: error.message });
+    }
+}
+
+export async function mostrarFormularioEditarController(req, res) {
+    try {
+        const { id } = req.params;
+        const superheroe = await obtenerSuperHeroePorId(id);
+
+        if (!superheroe) {
+            return res.status(404).send({ mensaje: 'Superhéroe no encontrado' });
+        }
+
+        res.render('editSuperhero', { superheroe });
+    } catch (error) {
+        res.status(500).send({ mensaje: 'Error al cargar el formulario de edición', error: error.message });
+    }
+}
