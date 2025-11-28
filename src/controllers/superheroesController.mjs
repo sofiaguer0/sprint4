@@ -110,6 +110,8 @@ export async function actualizarSuperHeroeController(req, res) {
         const {id} = req.params;
         const datosActualizados = req.body;
 
+
+        //entender mejor
         const superHeroeActualizado = await actualizarSuperHeroe(id, datosActualizados);
         const superheroeFormateado = renderizarSuperHeroe(superHeroeActualizado);
 
@@ -181,15 +183,17 @@ export async function eliminarSuperPorNombreController(req, res) {
 
 
 //tp3 
-
 export async function renderDashboardController(req, res) {
     try {
-        console.log("🦸 Entrando a renderDashboardController..."); // 👈 prueba de log
+        console.log("🦸 Entrando a renderDashboardController...");
 
         const superheroes = await obtenerTodosLosSuperHeroes();
         console.log("✅ Superheroes obtenidos:", superheroes.length);
 
-        res.render('dashboard', { superheroes });
+        res.render('dashboard', { 
+            title: 'Dashboard', 
+            superheroes 
+        });
     } catch (error) {
         console.error('❌ Error al renderizar dashboard:', error);
         res.status(500).send('Error al renderizar la vista');
@@ -199,11 +203,18 @@ export async function renderDashboardController(req, res) {
 
 export async function mostrarFormularioAgregarController(req, res) {
     try {
-        res.render('addSuperhero');
+        res.render('addSuperhero', {
+            title: "Agregar Superhéroe",   // 👈 NECESARIO PARA EL LAYOUT
+            layout: 'layout'               // 👈 asegura que use tu layout
+        });
     } catch (error) {
-        res.status(500).send({ mensaje: 'Error al cargar el formulario', error: error.message });
+        res.status(500).send({
+            mensaje: 'Error al cargar el formulario',
+            error: error.message
+        });
     }
 }
+
 
 export async function mostrarFormularioEditarController(req, res) {
     try {
@@ -214,8 +225,15 @@ export async function mostrarFormularioEditarController(req, res) {
             return res.status(404).send({ mensaje: 'Superhéroe no encontrado' });
         }
 
-        res.render('editSuperhero', { superheroe });
+        res.render('editSuperhero', {
+            title: "Editar Superhéroe",
+            superheroe,
+            layout: 'layout'   // 👈 usa el mismo layout que dashboard
+        });
     } catch (error) {
-        res.status(500).send({ mensaje: 'Error al cargar el formulario de edición', error: error.message });
+        res.status(500).send({
+            mensaje: 'Error al cargar el formulario de edición',
+            error: error.message
+        });
     }
 }

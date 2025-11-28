@@ -43,6 +43,7 @@ class SuperHeroRepository extends IRepository {
         return await nuevoSuperheroe.save();
     }
      async actualizarPorId(id, datosActualizados) {
+        //tarea: que es new
         return await SuperHero.findByIdAndUpdate(id, datosActualizados,{new: true})
     }
 

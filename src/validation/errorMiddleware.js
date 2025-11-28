@@ -3,7 +3,7 @@ import { validationResult } from 'express-validator';
 export const handleValidationErrors = (req, res, next) => {
     const errors = validationResult(req);
     
-    // Log para debug - luego lo puedes quitar
+    // Log para debug 
     console.log('¿Hay errores?', !errors.isEmpty());
     console.log('Errores encontrados:', errors.array());
     

@@ -1,84 +1,72 @@
-<!DOCTYPE html>
-<html lang="en">
+<!-- Usa tu CSS normal -->
+<link rel="stylesheet" href="/css/addSuperhero.css">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agregar Superheroe</title>
-    <link rel="stylesheet" href="/css/addSuperhero.css">
-</head>
-
-<body>
-    <div class="contenedor">
-        <div class="header">
-            <h1>Agregar Superheroes</h1>
-            <p>Completa el formulario para agregar un nuevo Superheroe</p>
-            <a href="/api/dashboard" class="boton-header">Volver al dashboard</a>
-        </div>
-        <div class="contenedor-formulario">
-            <form id="superheroeForm">
-                <div class="form-grupo">
-                    <label for="nombreSuperheroe">Nombre del Superheroe</label>
-                    <input type="text" name="nombreSuperheroe" id="nombreSuperheroe" required>
-                   
-                </div>
-                <div class="form-grupo">
-                    <label for="nombreReal">Nombre real</label>
-                    <input type="text" name="nombreReal" id="nombreReal" required>
-                  
-                </div>
-                <div class="form-grupo">
-                    <label for="edad">Edad del Superheroe</label>
-                    <input type="number" name="edad" id="edad"  required>
-               
-                </div>
-                <div class="form-grupo">
-                    <label for="planetaOrigen">Planeta de origen</label>
-                    <input type="text" name="planetaOrigen" id="planetaOrigen">
-                  
-                </div>
-                <div class="form-grupo">
-                    <label for="debilidad">Debilidad</label>
-                    <input type="text" name="debilidad" id="debilidad">
-                 
-                </div>
-                <div class="form-grupo">
-                    <label for="poderes">Poderes</label>
-                    <div id="poderesContenedor" class="array-poderes"></div> 
-                    <button type="button" class="boton-añadir-item" onclick="añadirItem('poderes')">Agregar
-                        Poder</button>
-                    
-                </div>
-                <div class="form-grupo">
-                    <label for="aliados">Aliados</label>
-                    <div id="aliadosContenedor" class="array-aliados"></div>
-                    <button type="button" class="boton-añadir-item" onclick="añadirItem('aliados')">Agregar
-                        Aliado</button>
-                    
-                </div>
-                <div class="form-grupo">
-                    <label for="enemigos">enemigos</label>
-                    <div id="enemigosContenedor" class="array-enemigos"></div>
-                    <button type="button" class="boton-añadir-item" onclick="añadirItem('enemigos')">Agregar
-                        Enemigo</button>
-                 
-                </div>
-                <div class="form-grupo">
-                    <label for="creador">Creador</label>
-                    <input type="text" name="creador" id="creador">
-                 
-                </div>
-
-                <div class="accionForm">
-                    <a href="/api/menu" class="boton-cancelar">Cancelar</a>
-                    <button type="submit" class="boton-agregar">Crear Superheroe</button>
-                </div>
-            </form>
-        </div>
+<div class="contenedor">
+    <div class="header">
+        <h1>Agregar Superhéroes</h1>
+        <p>Completa el formulario para agregar un nuevo Superhéroe</p>
+        <a href="/api/dashboard" class="boton-header">Volver al dashboard</a>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="/js/addSuperhero.js"></script>
-</body>
+    <div class="contenedor-formulario">
+        <form id="superheroeForm">
 
-</html>
+            <div class="form-grupo">
+                <label for="nombreSuperheroe">Nombre del Superheroe</label>
+                <input type="text" name="nombreSuperheroe" id="nombreSuperheroe" required>
+            </div>
+
+            <div class="form-grupo">
+                <label for="nombreReal">Nombre real</label>
+                <input type="text" name="nombreReal" id="nombreReal" required>
+            </div>
+
+            <div class="form-grupo">
+                <label for="edad">Edad del Superheroe</label>
+                <input type="number" name="edad" id="edad" required>
+            </div>
+
+            <div class="form-grupo">
+                <label for="planetaOrigen">Planeta de origen</label>
+                <input type="text" name="planetaOrigen" id="planetaOrigen">
+            </div>
+
+            <div class="form-grupo">
+                <label for="debilidad">Debilidad</label>
+                <input type="text" name="debilidad" id="debilidad">
+            </div>
+
+            <div class="form-grupo">
+                <label for="poderes">Poderes</label>
+                <div id="poderesContenedor" class="array-poderes"></div>
+                <button type="button" class="boton-añadir-item" onclick="añadirItem('poderes')">Agregar Poder</button>
+            </div>
+
+            <div class="form-grupo">
+                <label for="aliados">Aliados</label>
+                <div id="aliadosContenedor" class="array-aliados"></div>
+                <button type="button" class="boton-añadir-item" onclick="añadirItem('aliados')">Agregar Aliado</button>
+            </div>
+
+            <div class="form-grupo">
+                <label for="enemigos">Enemigos</label>
+                <div id="enemigosContenedor" class="array-enemigos"></div>
+                <button type="button" class="boton-añadir-item" onclick="añadirItem('enemigos')">Agregar Enemigo</button>
+            </div>
+
+            <div class="form-grupo">
+                <label for="creador">Creador</label>
+                <input type="text" name="creador" id="creador">
+            </div>
+
+            <div class="accionForm">
+                <a href="/api/dashboard" class="boton-cancelar">Cancelar</a>
+                <button type="submit" class="boton-agregar">Crear Superheroe</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/js/addSuperhero.js"></script>
