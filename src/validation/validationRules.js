@@ -25,6 +25,8 @@ export const validarCrearSuperHeroe = () => [
         .notEmpty().withMessage('Los poderes no pueden estar vacíos')
         .isLength({ min: 3, max: 60 }).withMessage('Cada poder debe tener entre 3 y 60 caracteres'),
     
+
+        //sanitizacion de datos
     body('planetaOrigen')
         .optional()
         .trim(),

@@ -1,97 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Superheroe</title>
     <link rel="stylesheet" href="/css/editSuperhero.css">
 </head>
-
 <body>
     <div class="contenedor">
         <div class="header">
             <h1>Editar Superheroes</h1>
-            <p>Completa el formulario para editar el Superheroe</p>
             <a href="/api/dashboard" class="boton-header">Volver al dashboard</a>
         </div>
-        <div class="contenedor-formulario">
-            <form id="superheroeForm">
-                <div class="form-grupo">
-                    <label for="nombreSuperheroe">Nombre del Superheroe</label>
-                    <input type="text" name="nombreSuperheroe" id="nombreSuperheroe"
-                        value="<%= superheroe.nombreSuperHeroe %>" required>
-                    <p class="texto-ayuda">Minimo 3 caracteres, Maximo 60</p>
-                    <p class="error-mensaje" id="error-nombreSuperheroe"></p>
-                </div>
-                <div class="form-grupo">
-                    <label for="nombreReal">Nombre real</label>
-                    <input type="text" name="nombreReal" id="nombreReal" value="<%= superheroe.nombreReal %>" required>
-                    <p class="texto-ayuda">Minimo 3 caracteres, Maximo 60</p>
-                    <p class="error-mensaje" id="error-nombreReal"></p>
-                </div>
-                <div class="form-grupo">
-                    <label for="edad">Edad del Superheroe</label>
-                    <input type="number" name="edad" id="edad" min="0" value="<%= superheroe.edad %>" required>
-                    <p class="texto-ayuda">Debe ser un numero mayor o igual a 0</p>
-                    <p class="error-mensaje" id="error-edad"></p>
-                </div>
-                <div class="form-grupo">
-                    <label for="planetaOrigen">Planeta de origen</label>
-                    <input type="text" name="planetaOrigen" id="planetaOrigen" value="<%= superheroe.planetaOrigen %>">
-                    <p class="texto-ayuda">Opcional</p>
-                    <p class="error-mensaje" id="error-planetaOrigen"></p>
-                </div>
-                <div class="form-grupo">
-                    <label for="debilidad">Debilidad</label>
-                    <input type="text" name="debilidad" id="debilidad" value="<%= superheroe.debilidad %>">
-                    <p class="texto-ayuda">Opcional</p>
-                    <p class="error-mensaje" id="error-debilidad"></p>
-                </div>
-                <div class="form-grupo">
-                    <label for="poderes">Poderes</label>
-                    <div id="poderesContenedor" class="array-poderes"></div>
-                    <button type="button" class="boton-añadir-item" onclick="añadirItem('poderes', '')">Agregar
-                        Poder</button>
-                    <p class="texto-ayuda">Minimo un poder</p>
-                    <p class="error-mensaje" id="error-poderes"></p>
-                </div>
-                <div class="form-grupo">
-                    <label for="aliados">Aliados</label>
-                    <div id="aliadosContenedor" class="array-aliados"></div>
-                    <button type="button" class="boton-añadir-item" onclick="añadirItem('aliados', '')">Agregar
-                        Poder</button>
-                    <p class="texto-ayuda">Opcional</p>
-                    <p class="error-mensaje" id="error-aliados"></p>
-                </div>
-                <div class="form-grupo">
-                    <label for="enemigos">enemigos</label>
-                    <div id="enemigosContenedor" class="array-enemigos"></div>
-                    <button type="button" class="boton-añadir-item" onclick="añadirItem('enemigos', '')">Agregar
-                        Poder</button>
-                    <p class="texto-ayuda">Opcional</p>
-                    <p class="error-mensaje" id="error-enemigos"></p>
-                </div>
-                <div class="form-grupo">
-                    <label for="creador">Creador</label>
-                    <input type="text" name="creador" id="creador" value="<%= superheroe.creador %>">
-                    <p class="texto-ayuda">Opcional</p>
-                    <p class="error-mensaje" id="error-creador"></p>
-                </div>
+   <form id="superheroeForm">
+    <div class="form-grupo">
+        <label for="nombreSuperHeroe">Nombre del Superheroe</label>
+        <input type="text" name="nombreSuperHeroe" id="nombreSuperHeroe" value="<%= superheroe.nombreSuperHeroe %>" required>
+    </div>
+    <div class="form-grupo">
+        <label for="nombreReal">Nombre real</label>
+        <input type="text" name="nombreReal" id="nombreReal" value="<%= superheroe.nombreReal %>" required>
+    </div>
+    <div class="form-grupo">
+        <label for="edad">Edad del Superheroe</label>
+        <input type="number" name="edad" id="edad"  value="<%= superheroe.edad %>" required>
+    </div>
+    <div class="form-grupo">
+        <label for="planetaOrigen">Planeta de origen</label>
+        <input type="text" name="planetaOrigen" id="planetaOrigen" value="<%= superheroe.planetaOrigen %>">
+    </div>
+    <div class="form-grupo">
+        <label for="debilidad">Debilidad</label>
+        <input type="text" name="debilidad" id="debilidad" value="<%= superheroe.debilidad %>">
+    </div>
+    <div class="form-grupo">
+        <label for="poderes">Poderes</label>
+        <div id="poderesContenedor" class="array-poderes"></div>
+        <button type="button" class="boton-añadir-item" onclick="añadirItem('poderes', '')">Agregar Poder</button>
+    </div>
+    <div class="form-grupo">
+        <label for="aliados">Aliados</label>
+        <div id="aliadosContenedor" class="array-aliados"></div>
+        <button type="button" class="boton-añadir-item" onclick="añadirItem('aliados', '')">Agregar Aliado</button>
+    </div>
+    <div class="form-grupo">
+        <label for="enemigos">Enemigos</label>
+        <div id="enemigosContenedor" class="array-enemigos"></div>
+        <button type="button" class="boton-añadir-item" onclick="añadirItem('enemigos', '')">Agregar Enemigo</button>
+    </div>
+    <div class="form-grupo">
+        <label for="creador">Creador</label>
+        <input type="text" name="creador" id="creador" value="<%= superheroe.creador %>">
+    </div>
+    
+    <div class="accionForm">
+        <a href="/api/dashboard" class="boton-cancelar">Cancelar</a>
+        <button type="submit" class="boton-editar">Editar Superheroe</button> 
+    </div>
+</form>
 
-                <div class="accionForm">
-                    <a href="/api/dashboard" class="boton-cancelar">Cancelar</a>
-                    <button type="submit" class="boton-editar">Editar Superheroe</button>
-                </div>
-            </form>
+
         </div>
     </div>
-      <script>
+    <script>
         window.superheroe = <%- JSON.stringify(superheroe) %>;
     </script>
-  
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="/js/editSuperhero.js"></script>
 </body>
-
 </html>

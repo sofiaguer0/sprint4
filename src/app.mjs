@@ -3,6 +3,8 @@ import { connectDB } from "./config/dbConfig.mjs";
 import superHeroRoutes from './routes/superHeroRoutes.mjs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import methodOverride from 'method-override';
+
 
 const app = express();
 const PORT = process.env.PORT || 3005;
@@ -10,8 +12,10 @@ const PORT = process.env.PORT || 3005;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-//Middleware para parsear JSON;
+//Middleware para manejar archivos JSON en las solicitudes;
 app.use(express.json());
+
+app.use(methodOverride('_method'));
 
 //conexion con la bd mongo;
 connectDB();
